@@ -7,7 +7,8 @@ products = soup.find_all('div', class_='product col-6 col-sm-4 col-md-3 pt-3 pb-
 for product in products:
     product_name = product.find('a', class_='product__name').text
     product_price = product.find('strong', class_='price').text
-    print(f'''
-    Name: {product_name}
-    Price: {product_price}
-    ''')
+    product_mapping = product.a['href']
+    product_url = f'https://www.poyerbani.pl{product_mapping}'
+    print(f"Product name: {product_name}")
+    print(f"Product price: {product_price}")
+    print(product_url)
