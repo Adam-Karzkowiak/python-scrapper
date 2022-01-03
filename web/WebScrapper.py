@@ -1,7 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
 
-html_text = requests.get('https://www.poyerbani.pl/search.php?text=yerba+mate').text
+print("Provide product name")
+provided_product_name = input('>')
+print(f'Searching for {provided_product_name}')
+provided_product_name.replace(" ", "+")
+html_text = requests.get(f'https://www.poyerbani.pl/search.php?text={provided_product_name}').text
 soup = BeautifulSoup(html_text, 'lxml')
 products = soup.find_all('div', class_='product col-6 col-sm-4 col-md-3 pt-3 pb-md-3 mb-3 mb-sm-0')
 for product in products:
